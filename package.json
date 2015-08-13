@@ -1,0 +1,28 @@
+{
+  "name": "test",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "coffee server.coffee",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "connect-mongo": "^0.8.1",
+    "derby": "^0.6.0-alpha45",
+    "derby-jade": "^0.6.17",
+    "derby-router": "^0.3.3",
+    "derby-stylus": "^0.1.0",
+    "express": "^4.13.0",
+    "livedb-mongo": "^0.4.1",
+    "racer-bundle": "^0.1.1",
+    "racer-highway": "^3.0.2"
+  },
+  "author": {
+    "name": "/bin/sh: 1: git: not found",
+    "email": "/bin/sh: 1: git: not found"
+  },
+  "license": "",
+  "readme": "test\n",
+  "readmeFilename": "README.md"
+}

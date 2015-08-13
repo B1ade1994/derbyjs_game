@@ -1,0 +1,86 @@
+
+body 
+	padding-left 20px
+	
+.left
+	float left
+
+.bold
+	font-weight bold
+
+form#new-game
+	width 300px
+	margin-top 50px
+
+	input#create-game
+		margin-top 10px
+
+section#games-list
+	margin-top 20px
+
+	li
+		width 200px
+		height 20px
+		list-style-type none
+		
+		p 
+			margin-top 0
+			margin-left 5px
+		
+		#delete
+			color blue
+			text-decoration underline
+			
+
+.clear
+	clear both
+
+// *************
+//   GAME JADE
+// *************
+
+section.hide
+	display none
+
+div#start-button
+	width 200px
+	height 100px
+	line-height 100px
+	text-align center
+	background-color #e3e3e3
+	cursor pointer
+	
+	:hover
+		background-color #aaa
+		
+section.not-start
+	display none
+	
+section.start-game
+	display block
+	
+	.hidden
+		display none
+	
+table
+	margin-top 20px
+	border-collapse collapse
+	
+	th
+		min-width 90px
+		height 40px
+		padding-left 10px
+		text-align left
+		font-weight normal
+		border 1px solid black
+	
+	td
+		min-width 60px
+		height 40px
+		padding 0 10px 0 10px
+		text-align center
+		border 1px solid black
+	
+	.total
+		background-color: #9FEE00
+			

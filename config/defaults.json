@@ -1,0 +1,7 @@
+{
+  "NODE_ENV": "development",
+  "PORT": 3000,
+  "MONGO_URL": "mongodb://localhost:27017/test",
+  "SESSION_SECRET": "28442f50e396b0cf7b79a3034ed84667ae11dbbe",
+  "SESSION_COOKIE": "f745110bfd917a8f6e4d4d14c7681573e4270c88"
+}

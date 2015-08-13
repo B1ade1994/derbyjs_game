@@ -1,0 +1,40 @@
+
+index:
+	label
+		input(type='checkbox', checked='{{#root._page.user.prof}}')
+		| Professor
+	
+	p Enter your name: 
+	form(on-submit='setUserName()')
+		input(type='text', value='{{#root._page.userName}}')
+		button(type='submit') Save!
+
+	if #root._page.user.userName
+		view(name="main")
+	else
+		p Enter your name to start playing
+
+main:
+	p Hello, {{#root.users[#root._session.userId].userName}}
+
+	form#new-game(method="post" action="/create_game")
+		input(type="submit" id="create-game" value="Create game") 
+
+	section#games-list
+		p List of games: 
+		
+		if _page.games
+			each _page.games as #game, #i
+				div#game-list
+					li
+						if #game.userIds.length == 3
+							if !#root._page.user.prof
+								p.left Game {{#i + 1}}  is full
+							else
+								a.left(href="/game/{{#game.id}}") Game {{#i + 1}}
+						else
+							a.left(href="/game/{{#game.id}}") Game {{#i + 1}}
+						p.left#delete(on-click='deleteGame(this.id)') Delete me
+					div.clear
+		else
+			p No games

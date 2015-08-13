@@ -1,0 +1,111 @@
+
+index:
+
+	if !_page.user.prof
+		view(name='player')
+	else		
+		view(name='professor')
+
+player:
+	p Hello, {{#root.users[#root._session.userId].userName}}	
+
+	section(class="{{if _page.players[#root._session.userId].isReady}}hide{{/}}")
+		if _page.game.userIds.length >= 3
+			div#start-button(on-click='startGame(_session.userId)')
+				p Start Game			
+		else
+			p Waiting players {{_page.game.userIds.length}}/3
+
+	section(class="{{if _page.players[#root._session.userId].isReady}}start-game{{else}}not-start{{/}}")
+		p STARTED
+
+		form(class='{{if _page.game.tableCollums.length == 8}}hidden{{/if}}' on-submit='nextRound(_page.userAnswer)')
+			input(type='text', value='{{_page.userAnswer}}')
+
+		table
+			tbody
+				tr
+					th 
+					each _page.game.tableCollums as collum, #i	
+						td Round {{#i+1}}
+				tr
+					th Quantity
+					each _page.game.tableCollums as collum, #i	
+						td 
+				each _page.game.userIds as #user
+					if _page.players[#user].isReady
+						tr
+							th {{_page.players[#user].userName}}
+							each _page.players[#user].answer as #answer, #i
+								if #i < _page.game.tableCollums.length
+									td {{#answer}}
+				tr
+					th
+					each _page.game.tableCollums as collum, #i	
+						td
+				tr
+					th Price
+					each _page.game.prices
+						td {{this}}
+				tr
+					th
+					each _page.game.tableCollums as collum, #i	
+						td
+				tr
+					th Profit
+					each _page.game.tableCollums as collum, #i	
+						td
+					td.total Total Profit
+				each _page.game.userIds as #user
+					if _page.players[#user].isReady
+						tr
+							th {{_page.players[#user].userName}}
+							each _page.players[#user].profits as #profit, #i
+								if #i < _page.game.tableCollums.length
+									td {{#profit}}
+							td.total.bold {{_page.players[#user].sumProfits}}
+
+professor:
+	p Hello, prof
+	form(on-submit='profNextRound()')
+		input(type='submit', value='Next Round')
+	table
+			tbody
+				tr
+					th 
+					each _page.game.tableCollums as collum, #i	
+						td Round {{#i+1}}
+				tr
+					th Quantity
+					each _page.game.tableCollums as collum, #i	
+						td 
+				each _page.game.userIds as #user
+					if _page.players[#user].isReady
+						tr
+							th {{_page.players[#user].userName}}
+							each _page.players[#user].answer as #answer
+								td {{#answer}}
+				tr
+					th
+					each _page.game.tableCollums as collum, #i	
+						td
+				tr
+					th Price
+					each _page.game.prices
+						td {{this}}
+				tr
+					th
+					each _page.game.tableCollums as collum, #i	
+						td
+				tr
+					th Profit
+					each _page.game.tableCollums as collum, #i	
+						td
+					td.total Total Profit
+				each _page.game.userIds as #user
+					if _page.players[#user].isReady
+						tr
+							th {{_page.players[#user].userName}}
+							each _page.players[#user].profits as #profit
+								td {{#profit}}
+							td.total.bold {{_page.players[#user].sumProfits}}
